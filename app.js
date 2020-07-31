@@ -2,6 +2,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const dbConnect = require("./database/dbConnect");
+const usersRoutes = require("./routes/usersRoutes")
 
 // local imports
 const User = require("./database/model/users");
@@ -40,30 +41,7 @@ app.use((req, res, next) => {
 //   response.json({ message: "Welcome to Project Ideas" });
 // });
 
-app.post("/auth/create-user", (request, response) => {
-    console.log(request.body);
-  // create a new instance of the user model
-  const user = new User({
-    _id: request.body._id,
-    userName: request.body.userName,
-    email: request.body.email,
-    password: request.body.password,
-  });
-
-  user
-    .save()
-    .then((result) => {
-      response.status(201).send({
-        message: "User Created Successfully",
-        result,
-      });
-    })
-    .catch((error) => {
-      response.status(400).send({
-        message: "Creating User Unsuccessful",
-        error,
-      });
-    });
-});
+// auth routes
+app.use('/auth', usersRoutes);
 
 module.exports = app;
