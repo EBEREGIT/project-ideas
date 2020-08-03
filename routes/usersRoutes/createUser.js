@@ -1,7 +1,18 @@
+// external imports
 const bcrypt = require("bcrypt");
+
+// internal imports
 const User = require("../../database/model/users");
+const userValidation = require("../../validatioin/userValidation");
+
 
 exports.createUser = (request, response) => {
+  // execute validation query
+  let { error } = userValidation.createUser.validate(request.body)
+
+  // if there is an error during validation, terminate execution
+  if (error) return response.status(403).send(error.details[0].message);
+
   // hash the password recieved
   bcrypt
     .hash(request.body.password, 10)
@@ -27,7 +38,7 @@ exports.createUser = (request, response) => {
         .catch((error) => {
           // failure to create user
           response.status(400).send({
-            message: "Creating User Unsuccessful",
+            message: "There seem to be another user with those details",
             error,
           });
         });

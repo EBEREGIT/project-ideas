@@ -37,9 +37,9 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.get("/", (request, response) => {
-//   response.json({ message: "Welcome to Project Ideas" });
-// });
+app.get("/", (request, response) => {
+  response.json({ message: "Welcome to Project Ideas" });
+});
 
 // auth routes
 app.use('/auth', usersRoutes);
