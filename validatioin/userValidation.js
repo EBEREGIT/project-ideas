@@ -11,7 +11,11 @@ const userValidation = {
       .min(6)
       .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$")),
   }),
-  // define all the other schemas below
+
+  // delete user validation schema
+  deleteUser: Joi.object().keys({
+    id: Joi.string().empty().required().alphanum(),
+  }),
 };
 
 module.exports = userValidation;
