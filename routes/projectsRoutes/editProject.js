@@ -4,7 +4,7 @@ const projectValidation = require("../../validatioin/projectsValidation");
 
 exports.editProject = (request, response) => {
   // execute validation query
-  let { error } = projectValidation.editProject.validate(request.params);
+  let { error } = projectValidation.singleProject.validate(request.params);
 
   // if there is an error during validation, terminate execution
   if (error) return response.status(403).send(error.details[0].message);
@@ -19,6 +19,7 @@ exports.editProject = (request, response) => {
     seniority: request.body.seniority,
   });
 
+  // execute query
   Project.updateOne({ _id: request.params.id }, project)
     .then((result) => {
       // success

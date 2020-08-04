@@ -10,8 +10,8 @@ const projectValidation = {
     seniority: Joi.string().empty().required().min(4),
   }),
 
-  // edit project validation schema
-  editProject: Joi.object().keys({
+  // project validation schema for a single project
+  singleProject: Joi.object().keys({
     id: Joi.string().empty().required().alphanum(),
   }),
 };
