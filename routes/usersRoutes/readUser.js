@@ -29,7 +29,11 @@ exports.readUser = (request, response) => {
           //   if password matches
           //   create JWT token
           const token = jwt.sign(
-            { userId: user._id },
+            {
+              userId: user._id,
+              userName: user.userName,
+              userEmail: user.email,
+            },
             "AKWA_OKWUKWO_TIBE_AKI_IFE_DI_ABUO_OTU_GA_EME",
             { expiresIn: "24h" }
           );
