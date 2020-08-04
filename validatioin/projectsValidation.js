@@ -9,6 +9,11 @@ const projectValidation = {
     otherDetails: Joi.string().empty().required(),
     seniority: Joi.string().empty().required().min(4),
   }),
+
+  // edit project validation schema
+  editProject: Joi.object().keys({
+    id: Joi.string().empty().required().alphanum(),
+  }),
 };
 
 module.exports = projectValidation;
