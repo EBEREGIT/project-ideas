@@ -4,8 +4,15 @@ const jwt = require("jsonwebtoken");
 
 // internal imports
 const User = require("../../database/model/users");
+const userValidation = require("../../validatioin/userValidation");
 
 exports.readUser = (request, response) => {
+  // execute validation query
+  let { error } = userValidation.readUser.validate(request.body)
+
+  // if there is an error during validation, terminate execution
+  if (error) return response.status(403).send(error.details[0].message);
+
   User.findOne({ email: request.body.email })
     .then((user) => {
       // if email does not match any record terminate
