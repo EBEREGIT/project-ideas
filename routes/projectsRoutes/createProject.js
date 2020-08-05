@@ -18,6 +18,7 @@ exports.createProject = (request, response) => {
     otherDetails: request.body.otherDetails,
     seniority: request.body.seniority,
     uploadedBy: request.user.userId,
+    userName: request.user.userName,
   });
 
   // save the new project
