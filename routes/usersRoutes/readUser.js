@@ -4,8 +4,15 @@ const jwt = require("jsonwebtoken");
 
 // internal imports
 const User = require("../../database/model/users");
+const userValidation = require("../../validatioin/userValidation");
 
 exports.readUser = (request, response) => {
+  // execute validation query
+  let { error } = userValidation.readUser.validate(request.body)
+
+  // if there is an error during validation, terminate execution
+  if (error) return response.status(403).send(error.details[0].message);
+
   User.findOne({ email: request.body.email })
     .then((user) => {
       // if email does not match any record terminate
@@ -29,7 +36,11 @@ exports.readUser = (request, response) => {
           //   if password matches
           //   create JWT token
           const token = jwt.sign(
-            { userId: user._id },
+            {
+              userId: user._id,
+              userName: user.userName,
+              userEmail: user.email,
+            },
             "AKWA_OKWUKWO_TIBE_AKI_IFE_DI_ABUO_OTU_GA_EME",
             { expiresIn: "24h" }
           );

@@ -5,7 +5,7 @@ const UserSchema = new mongoose.Schema({
   userName: {
     type: String,
     required: [true, "Please provide a User Name!"],
-    unique: true,
+    unique: [true, "Username Taken"],
     trim: true,
     maxlength: [30, "Name too long!"],
   },
@@ -13,7 +13,7 @@ const UserSchema = new mongoose.Schema({
   email: {
     type: String,
     required: [true, "Please provide an Email!"],
-    unique: true,
+    unique: [true, "Email Exist"],
     trim: true,
     maxlength: [30, "Name too long!"],
   },

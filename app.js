@@ -1,11 +1,12 @@
 // external imports
 const express = require("express");
 const bodyParser = require("body-parser");
-const dbConnect = require("./database/dbConnect");
-const usersRoutes = require("./routes/usersRoutes")
 
 // local imports
 const User = require("./database/model/users");
+const dbConnect = require("./database/dbConnect");
+const usersRoutes = require("./routes/usersRoutes");
+const projectsRoutes = require("./routes/projectsRoutes");
 
 // initializations
 const app = express();
@@ -41,7 +42,9 @@ app.get("/", (request, response) => {
   response.json({ message: "Welcome to Project Ideas" });
 });
 
-// auth routes
-app.use('/auth', usersRoutes);
+// user routes
+app.use("/users", usersRoutes);
+// projects routes
+app.use("/projects", projectsRoutes);
 
 module.exports = app;

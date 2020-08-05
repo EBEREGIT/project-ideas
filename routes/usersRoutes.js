@@ -8,8 +8,8 @@ const readUser = require("./usersRoutes/readUser");
 const deleteUser = require("./usersRoutes/deleteUser");
 
 // user routes
-router.post("/create-user", createUser.createUser);
-router.post("/read-user", readUser.readUser);
-router.delete("/delete-user/:id", deleteUser.deleteUser);
+router.post("/create", createUser.createUser);
+router.post("/read", readUser.readUser);
+router.delete("/delete/:id", deleteUser.deleteUser);
 
 module.exports = router;
