@@ -1,7 +1,15 @@
 // internal imports
 const Project = require("../../database/model/projects");
+const projectValidation = require("../../validatioin/projectsValidation");
 
 exports.searchProjects = (request, response) => {
+  // execute validation query
+  let { error } = projectValidation.searchProject.validate(request.body);
+
+  // if there is an error during validation, terminate execution
+  if (error) return response.status(403).send(error.details[0].message);
+
+  // get search string
   const search = request.body.search;
 
   //   search the project name
