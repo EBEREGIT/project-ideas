@@ -1,7 +1,7 @@
 {
   "name": "project-ideas",
   "version": "1.0.0",
-  "description": "",
+  "description": "This project is hoped to house numerous project ideas that newbies should embark on after acquiring basic skills. It will be appreciated if recruiters can contribute projects they love to see in an entry level portfolio",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

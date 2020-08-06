@@ -14,6 +14,11 @@ const projectValidation = {
   singleProject: Joi.object().keys({
     id: Joi.string().empty().required().alphanum(),
   }),
+
+  // project validation schema for a search project
+  searchProject: Joi.object().keys({
+    search: Joi.string().empty().required().trim(),
+  }),
 };
 
 module.exports = projectValidation;

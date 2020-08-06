@@ -34,7 +34,13 @@ const ProjectSchema = new mongoose.Schema({
   uploadedBy: {
     type: String,
     trim: true,
-    required: [true, "Please provide a who uploaded!"],
+    required: [true, "Please provide id of who is uploading!"],
+  },
+
+  userName: {
+    type: String,
+    trim: true,
+    required: [true, "Please provide user name of who is uploading!"],
   },
 
 }, {timestamps: {}});
