@@ -2,6 +2,7 @@
 const Project = require("../../database/model/projects");
 
 exports.readUserProjects = (request, response) => {
+    // find all projects related to the logged in user
     Project.find({ uploadedBy: request.user.userId })
     .then((result) => {
       // success
