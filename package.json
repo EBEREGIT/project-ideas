@@ -1,7 +1,7 @@
 {
   "name": "project-ideas",
   "version": "1.0.0",
-  "description": "",
+  "description": "This project is hoped to house numerous project ideas that newbies should embark on after acquiring basic skills. It will be appreciated if recruiters can contribute projects they love to see in an entry level portfolio",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -22,8 +22,7 @@
     "express": "^4.17.1",
     "joi": "^17.1.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.26",
-    "mongoose-partial-full-search": "0.0.4"
+    "mongoose": "^5.9.26"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
