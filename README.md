@@ -7,6 +7,9 @@ This project is hoped to house numerous project ideas that newbies should embark
 - [express](https://www.npmjs.com/package/express)
 - [mongoose](https://www.npmjs.com/package/mongoose)
 - [nodemon](https://www.npmjs.com/package/nodemon)
+- [joi](https://www.npmjs.com/package/joi)
+- [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
+- [bcrypt](https://www.npmjs.com/package/bcrypt)
 
 ## Installation
 - Clone the repo ``git clone https://github.com/EBEREGIT/project-ideas``
