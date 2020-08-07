@@ -12,30 +12,36 @@ exports.deleteProject = (request, response) => {
   // search if user exist
   Project.findOne({
     _id: request.params.id,
-  }).then((result) => {
-    // check if the logged in user is the one who uploaded the project
-    if (request.user.userId !== result.uploadedBy)
-      return response.status(400).send({
-        Warning: "You are not authorized to delete this project",
-      });
-  }).catch((error) => {
-    response.status(404).send({
-      message: "Project Not Found",
-      error,
-    });
-  });
+  })
+    .then((result) => {
+      // check if the logged in user is the one who uploaded the project
+      if (request.user.userId !== result.uploadedBy)
+        return response.status(400).send({
+          Warning: "You are not authorized to delete this project",
+        });
 
-  // Delete user
-  Project.deleteOne({ _id: request.params.id })
-    .then(() => {
-      response.status(200).send({
-        message: "Deleting Successful",
-      });
+      // Delete user
+      Project.deleteOne({ _id: request.params.id })
+        .then(() => {
+          response.status(200).send({
+            message: "Deleting Successful",
+          });
+        })
+
+        // return error if deleting was unsuccessful
+        .catch((error) => {
+          response.status(400).send({
+            message: "Error while Deleting",
+            error,
+          });
+        });
     })
-    .catch((error) => {
-      response.status(400).send({
-        message: "Error while Deleting",
-        error,
+
+    // return error if the project is not found
+    .catch((e) => {
+      response.status(404).send({
+        message: "Project Not Found",
+        e,
       });
     });
 };
