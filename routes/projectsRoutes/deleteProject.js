@@ -9,6 +9,23 @@ exports.deleteProject = (request, response) => {
   // if there is an error during validation, terminate execution
   if (error) return response.status(403).send(error.details[0].message);
 
+  // search if user exist
+  Project.findOne({
+    _id: request.params.id,
+  }).then((result) => {
+    // check if the logged in user is the one who uploaded the project
+    if (request.user.userId !== result.uploadedBy)
+      return response.status(400).send({
+        Warning: "You are not authorized to delete this project",
+      });
+  }).catch((error) => {
+    response.status(404).send({
+      message: "Project Not Found",
+      error,
+    });
+  });
+
+  // Delete user
   Project.deleteOne({ _id: request.params.id })
     .then(() => {
       response.status(200).send({
