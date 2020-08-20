@@ -17,7 +17,7 @@ const projectValidation = {
 
   // project validation schema for a search project
   searchProject: Joi.object().keys({
-    search: Joi.string().empty().required().trim(),
+    search: Joi.string(),
   }),
 };
 

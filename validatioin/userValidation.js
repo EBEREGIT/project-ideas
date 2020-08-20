@@ -5,21 +5,13 @@ const userValidation = {
   createUser: Joi.object().keys({
     userName: Joi.string().empty().required().alphanum().min(3),
     email: Joi.string().empty().required().email({ minDomainSegments: 2 }),
-    password: Joi.string()
-      .empty()
-      .required()
-      .min(6)
-      .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$")),
+    password: Joi.string().empty().required().min(6),
   }),
 
   // create user validation schema
   readUser: Joi.object().keys({
     email: Joi.string().empty().required().email({ minDomainSegments: 2 }),
-    password: Joi.string()
-      .empty()
-      .required()
-      .min(6)
-      .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$")),
+    password: Joi.string().empty().required().min(6),
   }),
 
   // delete user validation schema
