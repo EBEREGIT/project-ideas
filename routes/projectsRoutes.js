@@ -18,7 +18,7 @@ router.put("/edit/:id", auth, editProject.editProject);
 router.delete("/delete/:id", auth, deleteProject.deleteProject);
 router.get("/user", auth, readUserProjects.readUserProjects);
 router.get("/read/:id", readProject.readProject);
+router.post("/search", searchProjects.searchProjects);
 router.get("/", readAllProjects.readAllProjects);
-router.get("/search", searchProjects.searchProjects);
 
 module.exports = router;
