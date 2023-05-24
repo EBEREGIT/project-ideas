@@ -1,5 +1,5 @@
 # project-ideas
-This project houses the frontend of an application that hosts ideas that newbies should embark on after acquiring basic skills. It will be appreciated if recruiters can contribute projects they love to see in an entry level portfolio.
+This project houses the backend of an application that hosts ideas that newbies should embark on after acquiring basic skills. It will be appreciated if recruiters can contribute projects they love to see in an entry level portfolio.
 
 ## Dependencies
 - [body-parser](https://www.npmjs.com/package/body-parser)
